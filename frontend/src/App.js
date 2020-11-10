@@ -13,7 +13,7 @@ function App() {
     <div className="grid-container">
       <header className="header">
         <div className="brand">
-          <button onclick="openMenu()">
+          <button onClick={openMenu}>
             &#9776;
             </button>
           <a href="index.html">The Floor Nest</a>
@@ -25,10 +25,10 @@ function App() {
       </header>
       <aside className="sidebar">
         <h3>Menu</h3>
-        <button className="sidebar-close-button" onclick="closeMenu()">X</button>
+        <button className="sidebar-close-button" onClick={closeMenu}>X</button>
         <ul>
           <li>
-            <a href="index.html">The Book</a>
+            <a href="https://www.amazon.com/FLIGHTLESS-Caleb-Saleh/dp/B08HGTJK57/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=&sr=">The Book</a>
           </li>
           <li>
             <a href="https://medium.com/@snsaleh11/the-birth-of-flightless-d800a0bc011">About the Book</a>
@@ -38,17 +38,20 @@ function App() {
       <main className="main">
         <div className="content">
           <ul className="products">
-            <li>
+            {
+              data.products.map(product => 
+                <li>
               <div className="product">
-                <img className="product-image" src="images/d1.jpg" alt="product"></img>
+                <img className="product-image" src={product.image} alt="product"></img>
                   <div className="product-name">
-                    <a href="product.html">FLIGHTLESS By Caleb Saleh</a>
+                    <a href="product.html">{product.name}</a>
                   </div>
-                  <div className="product-brand">Children's Picture Book</div>
-                  <div className="product-price">$15</div>
-                  <div className="product-rating">5.0 Stars (198 reviews)</div>
+                  <div className="product-brand">{product.brand}</div>
+                  <div className="product-price">{product.price}</div>
+                  <div className="product-rating">{product.rating} Stars ({product.numReviews})</div>
                     </div> 
-                </li>
+                </li>)
+            }
               <li>
                 <div className="product">
                   <img className="product-image" src="images/d1.jpg" alt="product"></img>
