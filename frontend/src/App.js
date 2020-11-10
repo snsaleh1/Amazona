@@ -1,5 +1,7 @@
-import logo from './logo.svg';
+import React from 'react';
+import data from './data';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
 
@@ -10,6 +12,7 @@ function App() {
     document.querySelector(".sidebar").classList.remove("open");
   }
   return (
+  <BrowserRouter>
     <div className="grid-container">
       <header className="header">
         <div className="brand">
@@ -37,6 +40,8 @@ function App() {
       </aside>
       <main className="main">
         <div className="content">
+          <Route path="/products/:id" component={ProductScreen} />
+          <Route path="/" exact={true} component={HomeScreen} />
           <ul className="products">
             {
               data.products.map(product => 
@@ -70,6 +75,7 @@ function App() {
             All rights reserved.
     </footer>
         </div>
+  </BrowserRouter>
   );
 }
 
